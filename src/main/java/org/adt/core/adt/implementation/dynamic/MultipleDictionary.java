@@ -8,20 +8,57 @@ import org.adt.core.adt.implementation.normal.Set;
 public class MultipleDictionary implements IMultipleDictionary {
 
     private MultipleDictionaryNode first;
-    private int size;
-
-    public MultipleDictionary() {
-        size = 0;
-    }
 
     @Override
     public void add(int key, int value) {
-        // TODO
+        ISet set = new Set();
+        set.add(value);
+        if(this.first == null) {
+            this.first = new MultipleDictionaryNode(key, set, null);
+            return;
+        }
+        MultipleDictionaryNode candidate = this.first;
+        while(candidate.getNext() != null) {
+            if(candidate.getKey() == key) {
+                candidate.getValue().add(value);
+                return;
+            }
+            candidate = candidate.getNext();
+        }
+        if(candidate.getKey() == key) {
+            candidate.getValue().add(value);
+            return;
+        }
+        candidate.setNext(new MultipleDictionaryNode(key, set, null));
     }
 
     @Override
     public void remove(int key, int value) {
-        // TODO
+        MultipleDictionaryNode backup = null;
+        MultipleDictionaryNode candidate = this.first;
+        while(candidate != null) {
+            if(candidate.getKey() == key) {
+                candidate.getValue().remove(value);
+                if(candidate.getValue().isEmpty()) {
+                    if(backup == null) {
+                        if(candidate.getNext() == null) {
+                            this.first = null;
+                            return;
+                        }
+                        this.first = this.first.getNext();
+                        return;
+                    }
+                    if(candidate.getNext() == null) {
+                        candidate.setNext(null);
+                        return;
+                    }
+                    candidate.setNext(candidate.getNext().getNext());
+                }
+                return;
+            }
+            backup = candidate;
+            candidate = candidate.getNext();
+        }
     }
 
     @Override
@@ -54,20 +91,6 @@ public class MultipleDictionary implements IMultipleDictionary {
 
     @Override
     public boolean isEmpty() {
-        return size == 0;
-    }
-
-    private MultipleDictionaryNode indexOfKey(int key) {
-        if(this.first == null) {
-            return null;
-        }
-        MultipleDictionaryNode candidate = this.first;
-        while(candidate.getNext() != null) {
-            if(candidate.getKey() == key) {
-                return candidate;
-            }
-            candidate = candidate.getNext();
-        }
-        return null;
+        return this.first == null;
     }
 }

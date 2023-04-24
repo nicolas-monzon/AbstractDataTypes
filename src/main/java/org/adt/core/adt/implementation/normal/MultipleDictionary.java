@@ -36,14 +36,17 @@ public class MultipleDictionary implements IMultipleDictionary {
     }
 
     @Override
-    public void remove(int key, int value) { // TODO no debe eliminar el conjunto, sino un elemento del conjunto
+    public void remove(int key, int value) {
         int index = indexOfKey(key);
         if (index != -1 && this.existsValue(this.values[index], value)) {
-            for (int i = index; i < this.size - 1; i++) {
-                this.keys[i] = this.keys[i + 1];
-                this.values[i] = this.values[i + 1];
+            this.values[index].remove(value);
+            if(this.values[index].isEmpty()) {
+                for (int i = index; i < this.size - 1; i++) {
+                    this.keys[i] = this.keys[i + 1];
+                    this.values[i] = this.values[i + 1];
+                }
+                this.size--;
             }
-            this.size--;
         }
     }
 
