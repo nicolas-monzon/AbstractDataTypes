@@ -64,4 +64,102 @@ public class BinaryTreeAlgorithms {
         return candidate;
     }
 
+    public static boolean skewed(BinaryTree binaryTree) {
+        return leftSkewed(binaryTree) || rightSkewed(binaryTree);
+    }
+
+    public static boolean leftSkewed(BinaryTree binaryTree) {
+        if(binaryTree == null || binaryTree.isEmpty()) {
+            return true;
+        }
+        return binaryTree.getRight() == null && leftSkewed(binaryTree);
+    }
+
+    public static boolean rightSkewed(BinaryTree binaryTree) {
+        if(binaryTree == null || binaryTree.isEmpty()) {
+            return true;
+        }
+        return binaryTree.getLeft() == null && rightSkewed(binaryTree);
+    }
+    
+    public static boolean degenerate(BinaryTree binaryTree) {
+        if(binaryTree == null || binaryTree.isEmpty()) {
+            return true;
+        }
+        
+        if(binaryTree.getLeft() != null) {
+            if(binaryTree.getRight() != null) {
+                return false;
+            }
+            return degenerate(binaryTree.getLeft());
+        }
+
+        if(binaryTree.getRight() != null) {
+            if(binaryTree.getLeft() != null) {
+                return false;
+            }
+            return degenerate(binaryTree.getRight());
+        }
+        
+        return true;
+    }
+    
+    public static boolean complete(BinaryTree binaryTree) {
+        if(binaryTree == null || binaryTree.isEmpty()) {
+            return true;
+        }
+
+        return binaryTree.getLeft() != null &&
+                binaryTree.getRight() != null &&
+                complete(binaryTree.getLeft()) &&
+                complete(binaryTree.getRight()) ||
+                binaryTree.getLeft() == null && binaryTree.getRight() == null;
+    }
+
+    public static boolean perfect(BinaryTree binaryTree) {
+        if(binaryTree == null || binaryTree.isEmpty()) {
+            return true;
+        }
+
+        if(!complete(binaryTree.getLeft()) || !complete(binaryTree.getRight())) {
+            return false;
+        }
+
+        if(height(binaryTree.getLeft()) != height(binaryTree.getRight())) {
+            return false;
+        }
+
+        return perfect(binaryTree.getLeft()) && perfect(binaryTree.getRight());
+    }
+    
+    private static boolean existsLT(BinaryTree binaryTree, int value) {
+        if(binaryTree == null || binaryTree.isEmpty()) {
+            return false;
+        }
+        if(binaryTree.getValue() < value) {
+            return true;
+        }
+        return existsLT(binaryTree.getLeft(), value) || existsLT(binaryTree.getRight(), value);
+    }
+
+    private static boolean existsGT(BinaryTree binaryTree, int value) {
+        if(binaryTree == null || binaryTree.isEmpty()) {
+            return false;
+        }
+        if(binaryTree.getValue() > value) {
+            return true;
+        }
+        return existsGT(binaryTree.getLeft(), value) || existsGT(binaryTree.getRight(), value);
+    }
+
+    private static boolean isSBT(BinaryTree binaryTree) {
+        if(binaryTree == null || binaryTree.isEmpty()) {
+            return true;
+        }
+        return !existsGT(binaryTree.getLeft(), binaryTree.getValue()) &&
+                !existsLT(binaryTree.getRight(), binaryTree.getValue()) &&
+                isSBT(binaryTree.getLeft()) &&
+                isSBT(binaryTree.getRight());
+    }
+
 }

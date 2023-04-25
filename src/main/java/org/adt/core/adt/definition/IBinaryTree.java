@@ -55,10 +55,10 @@ public interface IBinaryTree {
     /**
      * @return hijo izquierdo, o <code>null</code> en caso de no tener.
      */
-    BinaryTree getLeft();
+    IBinaryTree getLeft();
 
     /**
      * @return hijo derecho, o <code>null</code> en caso de no tener.
      */
-    BinaryTree getRight();
+    IBinaryTree getRight();
 }
