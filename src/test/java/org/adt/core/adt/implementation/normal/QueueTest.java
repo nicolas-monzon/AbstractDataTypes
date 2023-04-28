@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class StaticQueueTest {
+public class QueueTest {
 
     @Test
     @DisplayName("Should add an arbitrary element first in the queue successfully")

@@ -14,6 +14,7 @@ public class Set implements ISet {
     public void add(int a) { // N * C
         if(this.first == null) { // C
             this.first = new Node(a, null); // C
+            this.count++;
             return;
         }
 
@@ -24,7 +25,7 @@ public class Set implements ISet {
         Node candidate = this.first; // C
         while(candidate.getNext() != null) { // N * C
             candidate = candidate.getNext(); // C
-            if(candidate.getValue() == a) { // C 
+            if(candidate.getValue() == a) { // C
                 return;
             }
         }
@@ -39,27 +40,36 @@ public class Set implements ISet {
         }
 
         if(this.first != null && this.first.getNext() == null) {
-            this.first = null;
+            if(this.first.getValue() == a) {
+                this.first = null;
+                this.count--;
+            }
+            return;
+        }
+
+        if(this.first.getValue() == a) {
+            this.first = this.first.getNext();
             this.count--;
             return;
         }
 
-        Node backup;
-        Node candidate = this.first;
-        while(candidate.getNext() != null) {
-            backup = candidate;
-            candidate = candidate.getNext();
+        Node backup = this.first;
+        Node candidate = this.first.getNext();
+
+        while(candidate != null) {
             if(candidate.getValue() == a) {
                 backup.setNext(candidate.getNext());
                 this.count--;
                 return;
             }
+            backup = candidate;
+            candidate = candidate.getNext();
         }
     }
 
     @Override
     public boolean isEmpty() {
-        return this.first == null;
+        return this.count == 0;
     }
 
     @Override
@@ -70,7 +80,7 @@ public class Set implements ISet {
         }
         int randomIndex = (new Random()).nextInt(this.count);
         Node candidate = this.first;
-        for(int i = 0; i <= randomIndex; i++) {
+        for(int i = 1; i <= randomIndex; i++) {
             candidate = candidate.getNext();
         }
         return candidate.getValue();
