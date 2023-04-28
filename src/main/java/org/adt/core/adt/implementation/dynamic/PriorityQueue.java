@@ -9,15 +9,40 @@ public class PriorityQueue implements IPriorityQueue {
 
     @Override
     public void add(int a, int priority) {
-        if(this.first == null) {
-            this.first = new PriorityNode(a, priority,null);
+        if (this.first == null) { // 0 elements
+            this.first = new PriorityNode(a, priority, null);
             return;
         }
-        PriorityNode candidate = this.first;
-        while(candidate.getNext() != null && candidate.getPriority() > priority) {
+
+        if (this.first.getNext() == null) { // 1 element
+            if (this.first.getPriority() > priority) {
+                this.first = new PriorityNode(a, priority, this.first);
+            } else {
+                this.first.setNext(new PriorityNode(a, priority, null));
+            }
+            return;
+        }
+
+        // n elements
+
+        // 1° check first element:
+        if (this.first.getPriority() > priority) {
+            this.first = new PriorityNode(a, priority, this.first);
+            return;
+        }
+
+        PriorityNode backup = this.first;
+        PriorityNode candidate = this.first.getNext();
+        while(candidate.getNext() != null) {
+            if(candidate.getPriority() > priority) {
+                backup.setNext(new PriorityNode(a, priority, candidate));
+                return;
+            }
             candidate = candidate.getNext();
         }
-        candidate.setNext(new PriorityNode(a, priority,candidate.getNext()));
+        if(candidate.getPriority() > priority) {
+            backup.setNext(new PriorityNode(a, priority, null));
+        }
     }
 
     @Override

@@ -2,6 +2,10 @@ package org.adt.core.adt.implementation.normal;
 
 import org.adt.core.adt.definition.IPriorityQueue;
 
+/**
+ * Esta implementación no acepta valores repetidos en las prioridades,
+ * de lo contrario la busqueda binaria no sería válida
+ */
 public class PriorityQueue implements IPriorityQueue {
 
     private static final int LENGTH = 10000;
