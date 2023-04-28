@@ -4,15 +4,23 @@ import org.adt.core.adt.definition.IBinaryTree;
 
 public class BinaryTree implements IBinaryTree {
 
-    private Integer[] array;
+    private final Integer[] array;
+    private final int rootIndex;
+    private final int MAX_CAPACITY = 2*2*2*2*2*2*2*2*2*2*2 - 1;
 
     public BinaryTree() {
-        this.array = new Integer[100000];
+        this.array = new Integer[MAX_CAPACITY];
+        this.rootIndex = 0;
+    }
+
+    private BinaryTree(Integer[] array, int rootIndex) {
+        this.array = array;
+        this.rootIndex = rootIndex;
     }
 
     @Override
     public void create(int value) {
-        this.array[0] = value;
+        this.array[rootIndex] = value;
         for(int i = 1; i < this.array.length; i++) {
             this.array[i] = null;
         }
@@ -20,46 +28,58 @@ public class BinaryTree implements IBinaryTree {
 
     @Override
     public int getValue() {
-        return this.array[0];
+        return this.array[rootIndex];
     }
 
     @Override
     public boolean isEmpty() {
-        return this.array[0] == null;
+        return this.array[rootIndex] == null;
     }
 
     @Override
     public void addLeft(int value) {
-        this.array[1] = value;
-        clean(3);
-        clean(4);
+        if(rootIndex * 2 + 1 > MAX_CAPACITY) {
+            throw new RuntimeException("Excedida la altura del arbol");
+        }
+        this.array[rootIndex * 2 + 1] = value;
+        clean((rootIndex * 2 + 1) * 2 + 1);
+        clean((rootIndex * 2 + 1) * 2 + 2);
     }
 
     @Override
     public void addRight(int value) {
-        this.array[2] = value;
-        clean(5);
-        clean(6);
+        if(rootIndex * 2 + 2 > MAX_CAPACITY) {
+            throw new RuntimeException("Excedida la altura del arbol");
+        }
+        this.array[rootIndex * 2 + 2] = value;
+        clean((rootIndex * 2 + 2) * 2 + 1);
+        clean((rootIndex * 2 + 2) * 2 + 2);
     }
 
     @Override
     public void removeLeft() {
-        clean(1);
+        clean(rootIndex * 2 + 1);
     }
 
     @Override
     public void removeRight() {
-        clean(2);
+        clean(rootIndex * 2 + 2);
     }
 
     @Override
     public BinaryTree getLeft() {
-        return null;
+        if(rootIndex * 2 + 1 > MAX_CAPACITY) {
+            return null;
+        }
+        return new BinaryTree(this.array, rootIndex*2 + 1);
     }
 
     @Override
     public BinaryTree getRight() {
-        return null;
+        if(rootIndex * 2 + 2 > MAX_CAPACITY) {
+            return null;
+        }
+        return new BinaryTree(this.array, rootIndex*2 + 2);
     }
 
     private void clean(int index) {

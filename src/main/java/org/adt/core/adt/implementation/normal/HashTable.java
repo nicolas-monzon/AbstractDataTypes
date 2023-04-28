@@ -1,6 +1,7 @@
 package org.adt.core.adt.implementation.normal;
 
 public class HashTable {
+
     private int[][] buckets;
     private int capacity;
     private int size;
