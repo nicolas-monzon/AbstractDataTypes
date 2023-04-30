@@ -1,7 +1,5 @@
 package org.adt.core.adt.definition;
 
-import org.adt.core.adt.implementation.dynamic.BinaryTree;
-
 /**
  * Precondicion: para usar cualquier de estos metodos la estructura debe estar inicializada.
  */
@@ -19,7 +17,7 @@ public interface IBinaryTree {
      * Precondicion: El arbol no esta vacio.
      * @return valor de la raiz del arbol.
      */
-    int getValue();
+    Integer getValue();
 
     /**
      * @return <code>true</code> solo cuando el arbol esta vacio, <code>false</code> en otro caso.

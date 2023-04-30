@@ -13,7 +13,7 @@ public class BinaryTree implements IBinaryTree {
     }
 
     @Override
-    public int getValue() {
+    public Integer getValue() {
         if(this.root == null) {
             throw new RuntimeException("The tree is empty");
         }

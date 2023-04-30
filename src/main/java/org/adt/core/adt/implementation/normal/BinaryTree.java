@@ -27,7 +27,7 @@ public class BinaryTree implements IBinaryTree {
     }
 
     @Override
-    public int getValue() {
+    public Integer getValue() {
         return this.array[rootIndex];
     }
 
@@ -71,7 +71,11 @@ public class BinaryTree implements IBinaryTree {
         if(rootIndex * 2 + 1 > MAX_CAPACITY) {
             return null;
         }
-        return new BinaryTree(this.array, rootIndex*2 + 1);
+        BinaryTree candidate = new BinaryTree(this.array, rootIndex*2 + 1);
+        if(candidate.isEmpty()) {
+            return null;
+        }
+        return candidate;
     }
 
     @Override
@@ -79,7 +83,11 @@ public class BinaryTree implements IBinaryTree {
         if(rootIndex * 2 + 2 > MAX_CAPACITY) {
             return null;
         }
-        return new BinaryTree(this.array, rootIndex*2 + 2);
+        BinaryTree candidate = new BinaryTree(this.array, rootIndex*2 + 2);
+        if(candidate.isEmpty()) {
+            return null;
+        }
+        return candidate;
     }
 
     private void clean(int index) {
