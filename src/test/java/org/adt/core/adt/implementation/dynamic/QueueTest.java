@@ -1,4 +1,4 @@
-package org.adt.core.adt.implementation.normal;
+package org.adt.core.adt.implementation.dynamic;
 
 import org.adt.core.adt.definition.IQueue;
 import org.adt.core.adt.implementation.BaseQueueTest;

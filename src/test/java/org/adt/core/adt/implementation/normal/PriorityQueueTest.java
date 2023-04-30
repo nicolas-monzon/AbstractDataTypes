@@ -85,6 +85,7 @@ public class PriorityQueueTest {
     @DisplayName("Should get the first element successfully")
     public void getFirst() {
         PriorityQueue priorityQueue = new PriorityQueue();
+        assertEquals(-1, priorityQueue.getFirst());
         priorityQueue.add(3, 1);
         assertEquals(3, priorityQueue.getFirst());
         priorityQueue.add(4, 0);
@@ -95,6 +96,7 @@ public class PriorityQueueTest {
     @DisplayName("Should get the priority of the first element successfully")
     public void getPriority() {
         PriorityQueue priorityQueue = new PriorityQueue();
+        assertEquals(-1, priorityQueue.getPriority());
         priorityQueue.add(3, 1);
         assertEquals(1, priorityQueue.getPriority());
         priorityQueue.add(4, 0);
