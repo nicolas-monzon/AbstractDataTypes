@@ -49,7 +49,7 @@ public class MultipleDictionary implements IMultipleDictionary {
                         return;
                     }
                     if(candidate.getNext() == null) {
-                        candidate.setNext(null);
+                        backup.setNext(null);
                         return;
                     }
                     candidate.setNext(candidate.getNext().getNext());
@@ -67,9 +67,7 @@ public class MultipleDictionary implements IMultipleDictionary {
         MultipleDictionaryNode candidate = this.first; // C
         while(candidate != null) { // N * (N * C) = N^2 C = N^2
             keySet.add(candidate.getKey()); // N*C
-            if(candidate.getNext() != null) { // C
-                candidate = candidate.getNext(); // C
-            }
+            candidate = candidate.getNext();
         }
         return keySet; // C
     }
@@ -81,10 +79,7 @@ public class MultipleDictionary implements IMultipleDictionary {
             if(candidate.getKey() == key) {
                 return candidate.getValue();
             }
-
-            if(candidate.getNext() != null) {
-                candidate = candidate.getNext();
-            }
+            candidate = candidate.getNext();
         }
         return null; // Error
     }

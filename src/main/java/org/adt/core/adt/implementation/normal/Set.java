@@ -2,6 +2,8 @@ package org.adt.core.adt.implementation.normal;
 
 import org.adt.core.adt.definition.ISet;
 
+import java.util.Arrays;
+import java.util.Objects;
 import java.util.Random;
 
 public class Set implements ISet {
@@ -53,5 +55,20 @@ public class Set implements ISet {
         }
         int randomIndex = (new Random()).nextInt(this.count);
         return this.array[randomIndex];
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Set set = (Set) o;
+        if(count != set.count) return false;
+
+        for(int i = 0; i < count; i++) {
+            if(array[i] != set.array[i]) {
+                return false;
+            }
+        }
+        return true;
     }
 }

@@ -3,6 +3,7 @@ package org.adt.core.adt.implementation.dynamic;
 import org.adt.core.adt.definition.ISet;
 import org.adt.core.adt.implementation.dynamic.node.Node;
 
+import java.util.Objects;
 import java.util.Random;
 
 public class Set implements ISet {
@@ -11,26 +12,26 @@ public class Set implements ISet {
     private int count;
 
     @Override
-    public void add(int a) { // N * C
-        if(this.first == null) { // C
-            this.first = new Node(a, null); // C
+    public void add(int a) {
+        if(this.first == null) {
+            this.first = new Node(a, null);
             this.count++;
             return;
         }
 
-        if(this.first.getValue() == a) { // C
+        if(this.first.getValue() == a) {
             return;
         }
 
-        Node candidate = this.first; // C
-        while(candidate.getNext() != null) { // N * C
-            candidate = candidate.getNext(); // C
-            if(candidate.getValue() == a) { // C
+        Node candidate = this.first;
+        while(candidate.getNext() != null) {
+            candidate = candidate.getNext();
+            if(candidate.getValue() == a) {
                 return;
             }
         }
-        candidate.setNext(new Node(a, null)); // C
-        this.count++; // C
+        candidate.setNext(new Node(a, null));
+        this.count++;
     }
 
     @Override
@@ -84,5 +85,13 @@ public class Set implements ISet {
             candidate = candidate.getNext();
         }
         return candidate.getValue();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Set set = (Set) o;
+        return count == set.count && Objects.equals(first, set.first);
     }
 }

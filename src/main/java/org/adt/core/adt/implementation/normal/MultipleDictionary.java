@@ -20,9 +20,7 @@ public class MultipleDictionary implements IMultipleDictionary {
     public void add(int key, int value) {
         int index = indexOfKey(key);
         if (index != -1) {
-            Set staticSet = new Set();
-            staticSet.add(value);
-            this.values[index] = staticSet;
+            this.values[index].add(value);
             return;
         }
         if (this.size == this.keys.length) {
@@ -31,6 +29,7 @@ public class MultipleDictionary implements IMultipleDictionary {
             this.values = Arrays.copyOf(this.values, this.values.length * 2);
         }
         this.keys[this.size] = key;
+        this.values[this.size] = new Set();
         this.values[this.size].add(value);
         this.size++;
     }
@@ -65,7 +64,7 @@ public class MultipleDictionary implements IMultipleDictionary {
         while(!copy.isEmpty()) {
             int element = copy.choose();
             set.add(element);
-            set.remove(element);
+            copy.remove(element);
         }
         return exists;
     }
