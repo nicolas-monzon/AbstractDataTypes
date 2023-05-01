@@ -16,13 +16,22 @@ public class Dictionary implements IDictionary {
 
     @Override
     public void add(int key, int value) {
+        if(this.first == null) {
+            this.first = new DictionaryNode(key, value, null);
+            this.size++;
+            return;
+        }
         DictionaryNode index = indexOfKey(key);
         if (index != null) {
             index.setValue(value); // Si la key ya existe, se reemplaza el value
             return;
         }
-        index.setNext(new DictionaryNode(key, value, null));
-        size++;
+        DictionaryNode lastNode = this.first;
+        while(lastNode.getNext() != null) {
+            lastNode = lastNode.getNext();
+        }
+        lastNode.setNext(new DictionaryNode(key, value, null));
+        this.size++;
     }
 
     @Override
@@ -32,6 +41,7 @@ public class Dictionary implements IDictionary {
         }
         if(this.first.getKey() == key && this.first.getValue() == value) {
             this.first = this.first.getNext();
+            this.size--;
             return;
         }
         DictionaryNode backup = null;
@@ -39,6 +49,7 @@ public class Dictionary implements IDictionary {
         while(candidate.getNext() != null) {
             if(candidate.getKey() == key && candidate.getValue() == value) {
                 backup.setNext(candidate.getNext());
+                this.size--;
                 return;
             }
             backup = candidate;
@@ -46,6 +57,7 @@ public class Dictionary implements IDictionary {
         }
         if(candidate.getKey() == key && candidate.getValue() == value) {
             backup.setNext(null);
+            this.size--;
         }
     }
 
@@ -55,9 +67,7 @@ public class Dictionary implements IDictionary {
         DictionaryNode candidate = this.first;
         while(candidate != null) {
             keySet.add(candidate.getKey());
-            if(candidate.getNext() != null) {
-                candidate = candidate.getNext();
-            }
+            candidate = candidate.getNext();
         }
         return keySet;
     }
@@ -70,9 +80,7 @@ public class Dictionary implements IDictionary {
                 return candidate.getValue();
             }
 
-            if(candidate.getNext() != null) {
-                candidate = candidate.getNext();
-            }
+            candidate = candidate.getNext();
         }
         return -1; // Error
     }
@@ -87,7 +95,7 @@ public class Dictionary implements IDictionary {
             return null;
         }
         DictionaryNode candidate = this.first;
-        while(candidate.getNext() != null) {
+        while(candidate != null) {
             if(candidate.getKey() == key) {
                 return candidate;
             }
