@@ -10,12 +10,12 @@ public class Queue implements IQueue {
     @Override
     public void add(int a) {
         Node node = new Node(a, null);
-        if(this.first == null) {
+        if (this.first == null) {
             this.first = node;
             return;
         }
         Node candidate = this.first;
-        while(candidate.getNext() != null) {
+        while (candidate.getNext() != null) {
             candidate = candidate.getNext();
         }
         candidate.setNext(node);
@@ -23,7 +23,7 @@ public class Queue implements IQueue {
 
     @Override
     public void remove() {
-        if(this.first == null) {
+        if (this.first == null) {
             System.out.println("No se puede desacolar una cola vacia");
             return;
         }
@@ -37,7 +37,7 @@ public class Queue implements IQueue {
 
     @Override
     public int getFirst() {
-        if(this.first == null) {
+        if (this.first == null) {
             System.out.println("No se puede obtener el primero una cola vacia");
             return -1;
         }

@@ -67,7 +67,7 @@ public class BPlusTree {
             InternalNode newNode = new InternalNode();
             int mid = blockSize / 2;
             newNode.keys.addAll(child.keys.subList(mid, child.keys.size()));
-            if(child instanceof InternalNode) {
+            if (child instanceof InternalNode) {
                 newNode.children.addAll(((InternalNode) child).children.subList(mid, ((InternalNode) child).children.size()));
                 ((InternalNode) child).children.subList(mid, ((InternalNode) child).children.size()).clear();
             }

@@ -20,7 +20,7 @@ public class Stack implements IStack {
 
     @Override
     public void remove() {
-        if(count == 0) {
+        if (count == 0) {
             System.out.println("Error, no se puede desapilar una pila vacia");
             return;
         }
@@ -34,7 +34,7 @@ public class Stack implements IStack {
 
     @Override
     public int getTop() {
-        if(count == 0) {
+        if (count == 0) {
             System.out.println("Error, no se puede obtener el tope de una pila vacia");
             return -1;
         }

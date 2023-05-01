@@ -14,7 +14,7 @@ public class Stack implements IStack {
 
     @Override
     public void remove() {
-        if(this.first == null) {
+        if (this.first == null) {
             System.out.println("No se puede desapilar una pila vacia");
             return;
         }
@@ -28,7 +28,7 @@ public class Stack implements IStack {
 
     @Override
     public int getTop() {
-        if(this.first == null) {
+        if (this.first == null) {
             System.out.println("No se puede obtener el tope una pila vacia");
             return -1;
         }

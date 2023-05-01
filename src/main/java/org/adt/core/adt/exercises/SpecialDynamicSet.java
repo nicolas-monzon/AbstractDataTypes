@@ -12,23 +12,23 @@ public class SpecialDynamicSet implements ISet {
 
     @Override
     public void add(int a) {
-        if(this.first == null) {
+        if (this.first == null) {
             this.first = new Node(a, null);
             return;
         }
 
-        if(this.first.getValue() == a) {
+        if (this.first.getValue() == a) {
             return;
         }
 
         int total = 0;
         Node candidate = this.first;
-        while(candidate.getNext() != null) {
+        while (candidate.getNext() != null) {
             candidate = candidate.getNext();
-            if(candidate.getValue() == a) {
+            if (candidate.getValue() == a) {
                 total++;
             }
-            if((a % 2 == 1 && total == 1) || (a % 2 == 0 && total == 3)) {
+            if ((a % 2 == 1 && total == 1) || (a % 2 == 0 && total == 3)) {
                 return;
             }
         }
@@ -37,16 +37,16 @@ public class SpecialDynamicSet implements ISet {
 
     @Override
     public void remove(int a) {
-        if(this.first == null || (this.first.getNext() == null && this.first.getValue() != a)) {
+        if (this.first == null || (this.first.getNext() == null && this.first.getValue() != a)) {
             return;
         }
 
         Node backup;
         Node candidate = this.first;
-        while(candidate.getNext() != null) {
+        while (candidate.getNext() != null) {
             backup = candidate;
             candidate = candidate.getNext();
-            if(candidate.getValue() == a) {
+            if (candidate.getValue() == a) {
                 backup.setNext(candidate.getNext());
                 return;
             }
@@ -60,13 +60,13 @@ public class SpecialDynamicSet implements ISet {
 
     @Override
     public int choose() {
-        if(this.count == 0) {
+        if (this.count == 0) {
             System.out.println("No se puede elegir un elemento del conjunto vacio");
             return -1;
         }
         int randomIndex = (new Random()).nextInt(this.count);
         Node candidate = this.first;
-        for(int i = 0; i <= randomIndex; i++) {
+        for (int i = 0; i <= randomIndex; i++) {
             candidate = candidate.getNext();
         }
         return candidate.getValue();

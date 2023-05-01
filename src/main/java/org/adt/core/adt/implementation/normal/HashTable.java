@@ -2,8 +2,8 @@ package org.adt.core.adt.implementation.normal;
 
 public class HashTable {
 
-    private int[][] buckets;
-    private int capacity;
+    private final int[][] buckets;
+    private final int capacity;
     private int size;
     private static final int DEFAULT_CAPACITY = 10;
 
@@ -29,7 +29,7 @@ public class HashTable {
         int index = getBucketIndex(key);
         int[] bucket = buckets[index];
         if (bucket == null) {
-            buckets[index] = new int[] { key, value };
+            buckets[index] = new int[]{key, value};
             size++;
         } else {
             for (int i = 0; i < bucket.length; i += 2) {

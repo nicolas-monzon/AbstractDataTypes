@@ -33,21 +33,21 @@ public class PriorityQueue implements IPriorityQueue {
 
         PriorityNode backup = this.first;
         PriorityNode candidate = this.first.getNext();
-        while(candidate.getNext() != null) {
-            if(candidate.getPriority() > priority) {
+        while (candidate.getNext() != null) {
+            if (candidate.getPriority() > priority) {
                 backup.setNext(new PriorityNode(a, priority, candidate));
                 return;
             }
             candidate = candidate.getNext();
         }
-        if(candidate.getPriority() > priority) {
+        if (candidate.getPriority() > priority) {
             backup.setNext(new PriorityNode(a, priority, null));
         }
     }
 
     @Override
     public void remove() {
-        if(this.first == null) {
+        if (this.first == null) {
             System.out.println("No se puede desacolar una cola vacia");
             return;
         }
@@ -61,7 +61,7 @@ public class PriorityQueue implements IPriorityQueue {
 
     @Override
     public int getFirst() {
-        if(this.first == null) {
+        if (this.first == null) {
             System.out.println("No se puede obtener el primero una cola vacia");
             return -1;
         }
@@ -70,7 +70,7 @@ public class PriorityQueue implements IPriorityQueue {
 
     @Override
     public int getPriority() {
-        if(this.first == null) {
+        if (this.first == null) {
             System.out.println("No se puede obtener la prioridad del primero una cola vacia");
             return -1;
         }

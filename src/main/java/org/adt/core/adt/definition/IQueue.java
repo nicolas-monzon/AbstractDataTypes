@@ -7,6 +7,7 @@ public interface IQueue {
 
     /**
      * Postcondicion: Acola (coloca en el final de la cola) un valor.
+     *
      * @param a valor a acolar.
      */
     void add(int a);

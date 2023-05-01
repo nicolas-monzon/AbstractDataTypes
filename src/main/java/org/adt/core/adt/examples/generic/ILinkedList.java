@@ -1,16 +1,18 @@
-package org.adt.core.adt.definition;
+package org.adt.core.adt.examples.generic;
 
 /**
  * Precondicion: para usar cualquier de estos metodos la estructura debe estar inicializada.
+ *
+ * @param <T> Tipo de dato que va a almacenar
  */
-public interface ILinkedList {
+public interface ILinkedList<T> {
 
     /**
      * Agregar un elemento al en la ultima posicion.
      *
      * @param value contiene el valor a guardar en la ultima posicion.
      */
-    void add(int value);
+    void add(T value);
 
     /**
      * Postcondicion: Inserta un elemento solo si el indice es valido.
@@ -18,7 +20,7 @@ public interface ILinkedList {
      * @param index valido si esta en el rango [0, length], con length la longitud de la lista.
      * @param value contiene el valor a guardar en la posicion indicada.
      */
-    void insert(int index, int value);
+    void insert(int index, T value);
 
     /**
      * Postcondicion: Elimina el elemento si existe. De lo contrario no hace nada.
@@ -31,7 +33,7 @@ public interface ILinkedList {
      * @param index valido si esta en el rango [0, length), con length la longitud de la lista.
      * @return valor que se encuentra en la posicion indicada.
      */
-    int get(int index);
+    T get(int index);
 
     /**
      * @return longitud de la lista.

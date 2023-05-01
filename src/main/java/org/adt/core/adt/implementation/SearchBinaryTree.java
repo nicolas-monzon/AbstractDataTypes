@@ -17,7 +17,7 @@ public class SearchBinaryTree implements ISearchBinaryTree {
 
     @Override
     public int getValue() {
-        if(this.isEmpty()) {
+        if (this.isEmpty()) {
             System.out.println("SearchBinaryTree is not initialized");
             return -1;
         }
@@ -31,12 +31,12 @@ public class SearchBinaryTree implements ISearchBinaryTree {
 
     @Override
     public void add(int element) {
-        if(binaryTree.isEmpty()) {
+        if (binaryTree.isEmpty()) {
             binaryTree.create(element);
             return;
         }
-        if(element > binaryTree.getValue()) {
-            if(binaryTree.getRight() == null) {
+        if (element > binaryTree.getValue()) {
+            if (binaryTree.getRight() == null) {
                 binaryTree.addRight(element);
                 return;
             }
@@ -45,7 +45,7 @@ public class SearchBinaryTree implements ISearchBinaryTree {
             return;
         }
 
-        if(binaryTree.getLeft() == null) {
+        if (binaryTree.getLeft() == null) {
             binaryTree.addLeft(element);
             return;
         }
@@ -67,7 +67,7 @@ public class SearchBinaryTree implements ISearchBinaryTree {
     public ISearchBinaryTree getLeft() {
         try {
             SearchBinaryTree candidate = new SearchBinaryTree(this.binaryTree.getLeft());
-            if(candidate.isEmpty()) {
+            if (candidate.isEmpty()) {
                 return null;
             }
             return candidate;
@@ -80,7 +80,7 @@ public class SearchBinaryTree implements ISearchBinaryTree {
     public ISearchBinaryTree getRight() {
         try {
             SearchBinaryTree candidate = new SearchBinaryTree(this.binaryTree.getRight());
-            if(candidate.isEmpty()) {
+            if (candidate.isEmpty()) {
                 return null;
             }
             return candidate;

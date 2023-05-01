@@ -7,6 +7,7 @@ public interface IStack {
 
     /**
      * Postcondicion: Apila (coloca en el tope) un valor.
+     *
      * @param a valor a apilar.
      */
     void add(int a);

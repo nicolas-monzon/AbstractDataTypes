@@ -39,7 +39,7 @@ public class MultipleDictionary implements IMultipleDictionary {
         int index = indexOfKey(key);
         if (index != -1 && this.existsValue(this.values[index], value)) {
             this.values[index].remove(value);
-            if(this.values[index].isEmpty()) {
+            if (this.values[index].isEmpty()) {
                 for (int i = index; i < this.size - 1; i++) {
                     this.keys[i] = this.keys[i + 1];
                     this.values[i] = this.values[i + 1];
@@ -52,16 +52,16 @@ public class MultipleDictionary implements IMultipleDictionary {
     private boolean existsValue(ISet set, int value) {
         ISet copy = new Set();
         boolean exists = false;
-        while(!set.isEmpty()) {
+        while (!set.isEmpty()) {
             int element = set.choose();
-            if(element == value) {
+            if (element == value) {
                 exists = true;
                 break;
             }
             copy.add(element);
             set.remove(element);
         }
-        while(!copy.isEmpty()) {
+        while (!copy.isEmpty()) {
             int element = copy.choose();
             set.add(element);
             copy.remove(element);

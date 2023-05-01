@@ -11,6 +11,7 @@ public class Queue implements IQueue {
         this.array = new int[10000];
         this.count = 0;
     }
+
     @Override
     public void add(int a) {
         this.array[this.count] = a;
@@ -19,12 +20,12 @@ public class Queue implements IQueue {
 
     @Override
     public void remove() {
-        if(count == 0) {
+        if (count == 0) {
             System.out.println("Error, no se puede desacolar una cola vacia");
             return;
         }
-        for(int i = 0; i < this.array.length - 1; i++) {
-            this.array[i] = this.array[i+1];
+        for (int i = 0; i < this.array.length - 1; i++) {
+            this.array[i] = this.array[i + 1];
         }
         this.count--;
     }
@@ -36,7 +37,7 @@ public class Queue implements IQueue {
 
     @Override
     public int getFirst() {
-        if(count == 0) {
+        if (count == 0) {
             System.out.println("Error, no se puede obtener el primero de una cola vacia");
             return -1;
         }

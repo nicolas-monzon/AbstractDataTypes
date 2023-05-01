@@ -13,19 +13,19 @@ public class MultipleDictionary implements IMultipleDictionary {
     public void add(int key, int value) {
         ISet set = new Set();
         set.add(value);
-        if(this.first == null) {
+        if (this.first == null) {
             this.first = new MultipleDictionaryNode(key, set, null);
             return;
         }
         MultipleDictionaryNode candidate = this.first;
-        while(candidate.getNext() != null) {
-            if(candidate.getKey() == key) {
+        while (candidate.getNext() != null) {
+            if (candidate.getKey() == key) {
                 candidate.getValue().add(value);
                 return;
             }
             candidate = candidate.getNext();
         }
-        if(candidate.getKey() == key) {
+        if (candidate.getKey() == key) {
             candidate.getValue().add(value);
             return;
         }
@@ -36,19 +36,19 @@ public class MultipleDictionary implements IMultipleDictionary {
     public void remove(int key, int value) {
         MultipleDictionaryNode backup = null;
         MultipleDictionaryNode candidate = this.first;
-        while(candidate != null) {
-            if(candidate.getKey() == key) {
+        while (candidate != null) {
+            if (candidate.getKey() == key) {
                 candidate.getValue().remove(value);
-                if(candidate.getValue().isEmpty()) {
-                    if(backup == null) {
-                        if(candidate.getNext() == null) {
+                if (candidate.getValue().isEmpty()) {
+                    if (backup == null) {
+                        if (candidate.getNext() == null) {
                             this.first = null;
                             return;
                         }
                         this.first = this.first.getNext();
                         return;
                     }
-                    if(candidate.getNext() == null) {
+                    if (candidate.getNext() == null) {
                         backup.setNext(null);
                         return;
                     }
@@ -65,7 +65,7 @@ public class MultipleDictionary implements IMultipleDictionary {
     public ISet getKeys() { // N^2
         ISet keySet = new Set(); // C
         MultipleDictionaryNode candidate = this.first; // C
-        while(candidate != null) { // N * (N * C) = N^2 C = N^2
+        while (candidate != null) { // N * (N * C) = N^2 C = N^2
             keySet.add(candidate.getKey()); // N*C
             candidate = candidate.getNext();
         }
@@ -75,8 +75,8 @@ public class MultipleDictionary implements IMultipleDictionary {
     @Override
     public ISet getValues(int key) {
         MultipleDictionaryNode candidate = this.first;
-        while(candidate != null) {
-            if(candidate.getKey() == key) {
+        while (candidate != null) {
+            if (candidate.getKey() == key) {
                 return candidate.getValue();
             }
             candidate = candidate.getNext();

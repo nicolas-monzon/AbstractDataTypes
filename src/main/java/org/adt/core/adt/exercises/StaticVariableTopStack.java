@@ -8,7 +8,7 @@ public class StaticVariableTopStack implements IVariableTopStack {
 
     private final int[] array;
     private int count;
-    private int topLen;
+    private final int topLen;
 
     public StaticVariableTopStack(int topLen) {
         this.array = new int[10000];
@@ -24,7 +24,7 @@ public class StaticVariableTopStack implements IVariableTopStack {
 
     @Override
     public void remove() {
-        if(count == 0) {
+        if (count == 0) {
             System.out.println("Error, no se puede desapilar una pila vacia");
             return;
         }
@@ -38,15 +38,15 @@ public class StaticVariableTopStack implements IVariableTopStack {
 
     @Override
     public IStack getTop() {
-        if(count == 0) {
+        if (count == 0) {
             throw new RuntimeException("Error, no se puede obtener el tope de una pila vacia");
         }
-        if(count < topLen) {
+        if (count < topLen) {
             throw new RuntimeException("Error, no hay suficientes elementos");
         }
         IStack stack = new Stack();
 
-        for(int i = this.count - 1; i > this.count - 1 - topLen; i--) {
+        for (int i = this.count - 1; i > this.count - 1 - topLen; i--) {
             stack.add(this.array[i]);
         }
 

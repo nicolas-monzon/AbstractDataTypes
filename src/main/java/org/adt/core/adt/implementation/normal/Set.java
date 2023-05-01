@@ -2,8 +2,6 @@ package org.adt.core.adt.implementation.normal;
 
 import org.adt.core.adt.definition.ISet;
 
-import java.util.Arrays;
-import java.util.Objects;
 import java.util.Random;
 
 public class Set implements ISet {
@@ -18,8 +16,8 @@ public class Set implements ISet {
 
     @Override
     public void add(int a) {
-        for(int i = 0; i < this.count; i++) {
-            if(this.array[i] == a) {
+        for (int i = 0; i < this.count; i++) {
+            if (this.array[i] == a) {
                 return;
             }
         }
@@ -30,9 +28,9 @@ public class Set implements ISet {
 
     @Override
     public void remove(int a) {
-        for(int i = 0; i < this.count; i++) {
-            if(this.array[i] == a) {
-                if(i == this.count - 1) {
+        for (int i = 0; i < this.count; i++) {
+            if (this.array[i] == a) {
+                if (i == this.count - 1) {
                     this.count--;
                     return;
                 }
@@ -49,7 +47,7 @@ public class Set implements ISet {
 
     @Override
     public int choose() {
-        if(this.count == 0) {
+        if (this.count == 0) {
             System.out.println("No se puede elegir un elemento del conjunto vacio");
             return -1;
         }
@@ -62,10 +60,10 @@ public class Set implements ISet {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Set set = (Set) o;
-        if(count != set.count) return false;
+        if (count != set.count) return false;
 
-        for(int i = 0; i < count; i++) {
-            if(array[i] != set.array[i]) {
+        for (int i = 0; i < count; i++) {
+            if (array[i] != set.array[i]) {
                 return false;
             }
         }

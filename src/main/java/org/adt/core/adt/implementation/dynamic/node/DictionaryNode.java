@@ -12,5 +12,5 @@ public class DictionaryNode {
     private int key;
     private int value;
     private DictionaryNode next;
-    
+
 }

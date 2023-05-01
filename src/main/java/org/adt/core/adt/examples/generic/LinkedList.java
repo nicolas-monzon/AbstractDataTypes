@@ -1,11 +1,8 @@
-package org.adt.core.adt.implementation.dynamic;
+package org.adt.core.adt.examples.generic;
 
-import org.adt.core.adt.definition.ILinkedList;
-import org.adt.core.adt.implementation.dynamic.node.Node;
+public class LinkedList<T> implements ILinkedList<T> {
 
-public class LinkedList implements ILinkedList {
-
-    private Node first;
+    private Node<T> first;
     private int size;
 
     public LinkedList() {
@@ -13,14 +10,14 @@ public class LinkedList implements ILinkedList {
     }
 
     @Override
-    public void add(int value) {
-        Node newNode = new Node(value, null);
+    public void add(T value) {
+        Node<T> newNode = new Node(value, null);
         if (this.first == null) {
             this.first = newNode;
             this.size++;
             return;
         }
-        Node candidate = this.first;
+        Node<T> candidate = this.first;
         while (candidate.getNext() != null) {
             candidate = candidate.getNext();
         }
@@ -29,22 +26,22 @@ public class LinkedList implements ILinkedList {
     }
 
     @Override
-    public void insert(int index, int value) {
+    public void insert(int index, T value) {
         if (index < 0 || index > size) {
             System.out.println("Error, rango excedido");
             return;
         }
         if (index == 0) {
-            this.first = new Node(value, this.first);
+            this.first = new Node<>(value, this.first);
             return;
         }
         int count = 1;
-        Node candidate = this.first;
+        Node<T> candidate = this.first;
         while (count != index) {
             candidate = candidate.getNext();
             count++;
         }
-        candidate.setNext(new Node(value, candidate.getNext()));
+        candidate.setNext(new Node<>(value, candidate.getNext()));
     }
 
     @Override
@@ -58,7 +55,7 @@ public class LinkedList implements ILinkedList {
             return;
         }
         int count = 1;
-        Node candidate = this.first;
+        Node<T> candidate = this.first;
         while (count != index) {
             candidate = candidate.getNext();
             count++;
@@ -67,16 +64,16 @@ public class LinkedList implements ILinkedList {
     }
 
     @Override
-    public int get(int index) {
+    public T get(int index) {
         if (this.first == null) {
             System.out.println("Error, lista vacia");
-            return -1;
+            return null;
         }
         if (index == 0) {
             return this.first.getValue();
         }
         int count = 0;
-        Node candidate = this.first;
+        Node<T> candidate = this.first;
         while (count != index) {
             candidate = candidate.getNext();
             count++;

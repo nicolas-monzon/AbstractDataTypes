@@ -16,9 +16,9 @@ public class SpecialStaticSet implements ISet {
 
     @Override
     public void add(int a) {
-        if(a % 2 == 1) {
-            for(int i = 0; i < this.count; i++) {
-                if(this.array[i] == a) {
+        if (a % 2 == 1) {
+            for (int i = 0; i < this.count; i++) {
+                if (this.array[i] == a) {
                     return;
                 }
             }
@@ -27,13 +27,13 @@ public class SpecialStaticSet implements ISet {
             this.count++;
             return;
         }
-        
+
         int total = 0;
-        for(int i = 0; i < this.count; i++) {
-            if(this.array[i] == a) {
+        for (int i = 0; i < this.count; i++) {
+            if (this.array[i] == a) {
                 total++;
             }
-            if(total == 3) {
+            if (total == 3) {
                 return;
             }
         }
@@ -44,9 +44,9 @@ public class SpecialStaticSet implements ISet {
 
     @Override
     public void remove(int a) {
-        for(int i = 0; i < this.count; i++) {
-            if(this.array[i] == a) {
-                if(i == this.count - 1) {
+        for (int i = 0; i < this.count; i++) {
+            if (this.array[i] == a) {
+                if (i == this.count - 1) {
                     this.count--;
                     return;
                 }
@@ -63,7 +63,7 @@ public class SpecialStaticSet implements ISet {
 
     @Override
     public int choose() {
-        if(this.count == 0) {
+        if (this.count == 0) {
             System.out.println("No se puede elegir un elemento del conjunto vacio");
             return -1;
         }

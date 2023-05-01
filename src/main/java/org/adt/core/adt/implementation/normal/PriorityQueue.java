@@ -56,13 +56,13 @@ public class PriorityQueue implements IPriorityQueue {
 
     @Override
     public void remove() {
-        if(count == 0) {
+        if (count == 0) {
             System.out.println("Error, no se puede desacolar una cola vacia");
             return;
         }
-        for(int i = 0; i < this.array.length - 1; i++) {
-            this.array[i] = this.array[i+1];
-            this.priorities[i] = this.priorities[i+1];
+        for (int i = 0; i < this.array.length - 1; i++) {
+            this.array[i] = this.array[i + 1];
+            this.priorities[i] = this.priorities[i + 1];
         }
         this.count--;
     }
@@ -74,7 +74,7 @@ public class PriorityQueue implements IPriorityQueue {
 
     @Override
     public int getFirst() {
-        if(count == 0) {
+        if (count == 0) {
             System.out.println("Error, no se puede obtener el primero de una cola vacia");
             return -1;
         }
@@ -83,7 +83,7 @@ public class PriorityQueue implements IPriorityQueue {
 
     @Override
     public int getPriority() {
-        if(count == 0) {
+        if (count == 0) {
             System.out.println("Error, no se puede obtener la prioridad del primero de una cola vacia");
             return -1;
         }

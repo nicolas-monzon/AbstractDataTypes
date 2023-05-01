@@ -19,7 +19,7 @@ public class StackAlgorithms {
             aux.add(stack.getTop());
             stack.remove();
         }
-        while(!aux.isEmpty()) {
+        while (!aux.isEmpty()) {
             stack.add(aux.getTop());
             copy.add(aux.getTop());
             aux.remove();

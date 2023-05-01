@@ -13,20 +13,20 @@ public class Set implements ISet {
 
     @Override
     public void add(int a) {
-        if(this.first == null) {
+        if (this.first == null) {
             this.first = new Node(a, null);
             this.count++;
             return;
         }
 
-        if(this.first.getValue() == a) {
+        if (this.first.getValue() == a) {
             return;
         }
 
         Node candidate = this.first;
-        while(candidate.getNext() != null) {
+        while (candidate.getNext() != null) {
             candidate = candidate.getNext();
-            if(candidate.getValue() == a) {
+            if (candidate.getValue() == a) {
                 return;
             }
         }
@@ -36,19 +36,19 @@ public class Set implements ISet {
 
     @Override
     public void remove(int a) {
-        if(this.first == null || (this.first.getNext() == null && this.first.getValue() != a)) {
+        if (this.first == null || (this.first.getNext() == null && this.first.getValue() != a)) {
             return;
         }
 
-        if(this.first != null && this.first.getNext() == null) {
-            if(this.first.getValue() == a) {
+        if (this.first != null && this.first.getNext() == null) {
+            if (this.first.getValue() == a) {
                 this.first = null;
                 this.count--;
             }
             return;
         }
 
-        if(this.first.getValue() == a) {
+        if (this.first.getValue() == a) {
             this.first = this.first.getNext();
             this.count--;
             return;
@@ -57,8 +57,8 @@ public class Set implements ISet {
         Node backup = this.first;
         Node candidate = this.first.getNext();
 
-        while(candidate != null) {
-            if(candidate.getValue() == a) {
+        while (candidate != null) {
+            if (candidate.getValue() == a) {
                 backup.setNext(candidate.getNext());
                 this.count--;
                 return;
@@ -75,13 +75,13 @@ public class Set implements ISet {
 
     @Override
     public int choose() {
-        if(this.count == 0) {
+        if (this.count == 0) {
             System.out.println("No se puede elegir un elemento del conjunto vacio");
             return -1;
         }
         int randomIndex = (new Random()).nextInt(this.count);
         Node candidate = this.first;
-        for(int i = 1; i <= randomIndex; i++) {
+        for (int i = 1; i <= randomIndex; i++) {
             candidate = candidate.getNext();
         }
         return candidate.getValue();

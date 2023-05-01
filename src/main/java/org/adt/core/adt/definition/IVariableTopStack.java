@@ -8,8 +8,9 @@ public interface IVariableTopStack {
     void add(int a);
 
     void remove();
-    
+
     boolean isEmpty();
+
     IStack getTop();
 
 }

@@ -3,7 +3,7 @@ package org.adt.core.adt.implementation.dynamic.node;
 import org.adt.core.adt.implementation.dynamic.BinaryTree;
 
 public class BinaryTreeNode {
-    
+
     private int value;
     private BinaryTree left;
     private BinaryTree right;

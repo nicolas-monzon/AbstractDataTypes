@@ -7,7 +7,8 @@ public interface IPriorityQueue {
 
     /**
      * Postcondicion: Acola (coloca en el final de la cola) un valor, respecto a su prioridad.
-     * @param a valor a acolar.
+     *
+     * @param a        valor a acolar.
      * @param priority prioridad del valor a agregar.
      */
     void add(int a, int priority);

@@ -4,7 +4,7 @@ import org.adt.core.adt.definition.IBinaryTree;
 import org.adt.core.adt.implementation.dynamic.node.BinaryTreeNode;
 
 public class BinaryTree implements IBinaryTree {
-    
+
     private BinaryTreeNode root;
 
     @Override
@@ -14,7 +14,7 @@ public class BinaryTree implements IBinaryTree {
 
     @Override
     public Integer getValue() {
-        if(this.root == null) {
+        if (this.root == null) {
             throw new RuntimeException("The tree is empty");
         }
         return this.root.getValue();
@@ -27,7 +27,7 @@ public class BinaryTree implements IBinaryTree {
 
     @Override
     public void addLeft(int value) {
-        if(this.root == null) {
+        if (this.root == null) {
             throw new RuntimeException("The tree is empty");
         }
         BinaryTree binaryTree = new BinaryTree();
@@ -37,7 +37,7 @@ public class BinaryTree implements IBinaryTree {
 
     @Override
     public void addRight(int value) {
-        if(this.root == null) {
+        if (this.root == null) {
             throw new RuntimeException("The tree is empty");
         }
         BinaryTree binaryTree = new BinaryTree();
@@ -47,7 +47,7 @@ public class BinaryTree implements IBinaryTree {
 
     @Override
     public void removeLeft() {
-        if(this.root == null) {
+        if (this.root == null) {
             throw new RuntimeException("The tree is empty");
         }
         this.root.setLeft(null);
@@ -55,7 +55,7 @@ public class BinaryTree implements IBinaryTree {
 
     @Override
     public void removeRight() {
-        if(this.root == null) {
+        if (this.root == null) {
             throw new RuntimeException("The tree is empty");
         }
         this.root.setRight(null);
@@ -63,7 +63,7 @@ public class BinaryTree implements IBinaryTree {
 
     @Override
     public BinaryTree getLeft() {
-        if(this.root == null) {
+        if (this.root == null) {
             throw new RuntimeException("The tree is empty");
         }
         return this.root.getLeft();
@@ -71,7 +71,7 @@ public class BinaryTree implements IBinaryTree {
 
     @Override
     public BinaryTree getRight() {
-        if(this.root == null) {
+        if (this.root == null) {
             throw new RuntimeException("The tree is empty");
         }
         return this.root.getRight();

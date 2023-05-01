@@ -7,12 +7,14 @@ public interface ISet {
 
     /**
      * Postcondicion: Agrega un valor al conjunto.
+     *
      * @param a valor a agregar.
      */
     void add(int a);
 
     /**
      * Postcondicion: Quita el elemento indicado si existe, de lo contrario no hace nada.
+     *
      * @param a valor a quitar.
      */
     void remove(int a);

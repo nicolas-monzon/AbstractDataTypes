@@ -7,6 +7,7 @@ public interface ISearchBinaryTree {
 
     /**
      * Precondicion: El arbol no esta vacio.
+     *
      * @return valor de la raiz del arbol.
      */
     int getValue();
@@ -20,6 +21,7 @@ public interface ISearchBinaryTree {
      * Si el arbol es vacio, crea su raiz con el elemento pasado como parametro.
      * Siempre crea un arbol, siguiendo el siguiente algoritmo: Si el elemento a agregar es mayor, trata de agregarlo
      * a la derecha, si es menor a la izquierda, y si no puede aplica recursividad sobre el nodo actual.
+     *
      * @param value, valor a agregar.
      */
     void add(int value);
