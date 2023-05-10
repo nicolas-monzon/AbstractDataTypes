@@ -38,6 +38,7 @@ public interface INaryTree {
     /**
      * Precondicion: El arbol no esta vacio.
      * Elimina el hijo en la posicion indicada. En caso de no tener, no hace nada.
+     *
      * @param index, posicion del hijo
      */
     void remove(int index);
@@ -47,5 +48,5 @@ public interface INaryTree {
      * @return hijo en la posicion indicada, o <code>null</code> en caso de no tener.
      */
     IBinaryTree get(int index);
-    
+
 }
