@@ -1,5 +1,7 @@
 package org.adt.core.adt.definition;
 
+import org.adt.core.adt.implementation.dynamic.NaryTree;
+
 /**
  * Precondicion: para usar cualquier de estos metodos la estructura debe estar inicializada.
  */
@@ -47,6 +49,6 @@ public interface INaryTree {
      * @param index, posicion del hijo
      * @return hijo en la posicion indicada, o <code>null</code> en caso de no tener.
      */
-    IBinaryTree get(int index);
+    NaryTree get(int index);
 
 }

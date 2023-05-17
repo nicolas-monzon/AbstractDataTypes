@@ -1,14 +1,14 @@
 package org.adt.core.adt.implementation.dynamic.node;
 
-import org.adt.core.adt.implementation.dynamic.BinaryTree;
+import org.adt.core.adt.definition.IBinaryTree;
 
 public class BinaryTreeNode {
 
     private int value;
-    private BinaryTree left;
-    private BinaryTree right;
+    private IBinaryTree left;
+    private IBinaryTree right;
 
-    public BinaryTreeNode(int value, BinaryTree left, BinaryTree right) {
+    public BinaryTreeNode(int value, IBinaryTree left, IBinaryTree right) {
         this.value = value;
         this.left = left;
         this.right = right;
@@ -22,19 +22,19 @@ public class BinaryTreeNode {
         this.value = value;
     }
 
-    public BinaryTree getLeft() {
+    public IBinaryTree getLeft() {
         return left;
     }
 
-    public void setLeft(BinaryTree left) {
+    public void setLeft(IBinaryTree left) {
         this.left = left;
     }
 
-    public BinaryTree getRight() {
+    public IBinaryTree getRight() {
         return right;
     }
 
-    public void setRight(BinaryTree right) {
+    public void setRight(IBinaryTree right) {
         this.right = right;
     }
 }

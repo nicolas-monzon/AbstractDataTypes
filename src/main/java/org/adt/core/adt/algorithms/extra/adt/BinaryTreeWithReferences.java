@@ -1,9 +1,9 @@
-package org.adt.core.adt.implementation.dynamic;
+package org.adt.core.adt.algorithms.extra.adt;
 
 import org.adt.core.adt.definition.IBinaryTree;
 import org.adt.core.adt.implementation.dynamic.node.BinaryTreeNode;
 
-public class BinaryTree implements IBinaryTree {
+public class BinaryTreeWithReferences implements IBinaryTree {
 
     private BinaryTreeNode root;
 
@@ -30,9 +30,16 @@ public class BinaryTree implements IBinaryTree {
         if (this.root == null) {
             throw new RuntimeException("The tree is empty");
         }
-        BinaryTree binaryTree = new BinaryTree();
+        IBinaryTree binaryTree = new BinaryTreeWithReferences();
         binaryTree.create(value);
-        this.root.setLeft(binaryTree);
+        this.root.setRight(binaryTree);
+    }
+
+    public void addLeft(IBinaryTree value) {
+        if (this.root == null) {
+            throw new RuntimeException("The tree is empty");
+        }
+        this.root.setLeft(value);
     }
 
     @Override
@@ -40,9 +47,16 @@ public class BinaryTree implements IBinaryTree {
         if (this.root == null) {
             throw new RuntimeException("The tree is empty");
         }
-        BinaryTree binaryTree = new BinaryTree();
+        IBinaryTree binaryTree = new BinaryTreeWithReferences();
         binaryTree.create(value);
         this.root.setRight(binaryTree);
+    }
+
+    public void addRight(IBinaryTree value) {
+        if (this.root == null) {
+            throw new RuntimeException("The tree is empty");
+        }
+        this.root.setRight(value);
     }
 
     @Override
