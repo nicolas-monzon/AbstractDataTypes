@@ -8,7 +8,7 @@ public class NaryTreeNode {
 
     private int value;
     private List<NaryTree> children;
-    
+
     public NaryTreeNode(int value, List<NaryTree> children) {
         this.value = value;
         this.children = children;

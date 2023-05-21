@@ -162,55 +162,55 @@ public class BinaryTreeAlgorithms {
                 isSBT(binaryTree.getLeft()) &&
                 isSBT(binaryTree.getRight());
     }
-    
+
     public static boolean swap(IBinaryTree binaryTree, int value) {
-        if(binaryTree == null || binaryTree.isEmpty()) {
+        if (binaryTree == null || binaryTree.isEmpty()) {
             return false;
         }
-        if((binaryTree.getLeft() != null && 
+        if ((binaryTree.getLeft() != null &&
                 !binaryTree.getLeft().isEmpty() &&
                 binaryTree.getLeft().getValue() == value) ||
                 (binaryTree.getRight() != null &&
                         !binaryTree.getRight().isEmpty() &&
-                        binaryTree.getRight().getValue() == value)    
+                        binaryTree.getRight().getValue() == value)
         ) {
             IBinaryTree aux = binaryTree.getLeft();
             copy(binaryTree.getLeft(), binaryTree.getRight());
             copy(binaryTree.getRight(), aux);
             return true;
         }
-        
+
         return swap(binaryTree.getLeft(), value) || swap(binaryTree.getRight(), value);
     }
-    
+
     public static void copy(IBinaryTree binaryTree, IBinaryTree binaryTree2) {
-        if(binaryTree2 == null || binaryTree2.isEmpty() || binaryTree2.getValue() == -1) {
+        if (binaryTree2 == null || binaryTree2.isEmpty() || binaryTree2.getValue() == -1) {
             return;
         }
         binaryTree.create(binaryTree2.getValue());
         binaryTree.addLeft(binaryTree2.getLeft().getValue());
         binaryTree.addRight(binaryTree2.getRight().getValue());
-        if(binaryTree2.getLeft() == null) {
+        if (binaryTree2.getLeft() == null) {
             binaryTree2.addLeft(-1);
         }
-        if(binaryTree2.getRight() == null) {
+        if (binaryTree2.getRight() == null) {
             binaryTree2.addRight(-1);
         }
         copy(binaryTree.getLeft(), binaryTree2.getLeft());
         copy(binaryTree.getRight(), binaryTree2.getRight());
-        if(binaryTree.getLeft().getValue() == -1) {
+        if (binaryTree.getLeft().getValue() == -1) {
             binaryTree.removeLeft();
         }
-        if(binaryTree.getRight().getValue() == -1) {
+        if (binaryTree.getRight().getValue() == -1) {
             binaryTree.removeRight();
         }
     }
 
     public static boolean alternativeSwap(BinaryTreeWithReferences binaryTree, int value) {
-        if(binaryTree == null || binaryTree.isEmpty()) {
+        if (binaryTree == null || binaryTree.isEmpty()) {
             return false;
         }
-        if((binaryTree.getLeft() != null &&
+        if ((binaryTree.getLeft() != null &&
                 !binaryTree.getLeft().isEmpty() &&
                 binaryTree.getLeft().getValue() == value) ||
                 (binaryTree.getRight() != null &&
@@ -223,7 +223,7 @@ public class BinaryTreeAlgorithms {
             return true;
         }
 
-        return alternativeSwap((BinaryTreeWithReferences) binaryTree.getLeft(), value) || 
+        return alternativeSwap((BinaryTreeWithReferences) binaryTree.getLeft(), value) ||
                 alternativeSwap((BinaryTreeWithReferences) binaryTree.getRight(), value);
     }
 

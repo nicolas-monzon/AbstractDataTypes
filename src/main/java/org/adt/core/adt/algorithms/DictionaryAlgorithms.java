@@ -9,7 +9,7 @@ public class DictionaryAlgorithms {
 
     public static void print(IDictionary dictionary) {
         ISet keys = dictionary.getKeys();
-        while(!keys.isEmpty()) {
+        while (!keys.isEmpty()) {
             int key = keys.choose();
             System.out.printf("key: %d, value: %d", key, dictionary.getValue(key));
             keys.remove(key);
@@ -19,8 +19,8 @@ public class DictionaryAlgorithms {
     public static IDictionary counter(int[] array) {
         IDictionary dictionary = new Dictionary();
 
-        for(int i = 0; i < array.length; i++) {
-            if(!in(dictionary.getKeys(), array[i])) {
+        for (int i = 0; i < array.length; i++) {
+            if (!in(dictionary.getKeys(), array[i])) {
                 dictionary.add(array[i], 1);
             } else {
                 int total = dictionary.getValue(array[i]);
@@ -36,16 +36,16 @@ public class DictionaryAlgorithms {
     private static boolean in(ISet a, int element) {
         ISet aux = new Set();
         boolean exists = false;
-        while(!a.isEmpty()) {
+        while (!a.isEmpty()) {
             int value = a.choose();
-            if(element == value) {
+            if (element == value) {
                 exists = true;
                 break;
             }
             aux.add(value);
             a.remove(value);
         }
-        while(!aux.isEmpty()) {
+        while (!aux.isEmpty()) {
             int value = aux.choose();
             a.add(value);
             aux.remove(value);

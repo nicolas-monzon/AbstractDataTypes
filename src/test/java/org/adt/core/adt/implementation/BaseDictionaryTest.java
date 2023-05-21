@@ -94,7 +94,7 @@ public abstract class BaseDictionaryTest {
         Arrays.sort(keys);
 
         count = 1;
-        for(int key : keys) {
+        for (int key : keys) {
             assertEquals(count, key);
             count++;
         }
@@ -104,13 +104,13 @@ public abstract class BaseDictionaryTest {
     @DisplayName("Should get value by key successfully")
     public void getValue() {
         this.dictionary.add(1, 1);
-        assertEquals(1,  this.dictionary.getValue(1));
+        assertEquals(1, this.dictionary.getValue(1));
         this.dictionary.add(1, 2);
-        assertEquals(2,  this.dictionary.getValue(1));
+        assertEquals(2, this.dictionary.getValue(1));
         this.dictionary.add(3, 3);
-        assertEquals(3,  this.dictionary.getValue(3));
+        assertEquals(3, this.dictionary.getValue(3));
         this.dictionary.remove(3, 3);
-        assertEquals(-1,  this.dictionary.getValue(3));
+        assertEquals(-1, this.dictionary.getValue(3));
     }
 
     @Test

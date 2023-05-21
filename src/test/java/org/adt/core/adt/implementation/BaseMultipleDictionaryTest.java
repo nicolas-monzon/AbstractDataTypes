@@ -10,7 +10,6 @@ import org.junit.jupiter.api.Test;
 import java.util.Arrays;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.assertFalse;
 
 public abstract class BaseMultipleDictionaryTest {
 
@@ -124,7 +123,7 @@ public abstract class BaseMultipleDictionaryTest {
         Arrays.sort(keys);
 
         count = 1;
-        for(int key : keys) {
+        for (int key : keys) {
             assertEquals(count, key);
             count++;
         }
@@ -136,14 +135,14 @@ public abstract class BaseMultipleDictionaryTest {
         ISet result = new Set();
         result.add(1);
         this.dictionary.add(1, 1);
-        assertEquals(result,  this.dictionary.getValues(1));
+        assertEquals(result, this.dictionary.getValues(1));
         this.dictionary.add(1, 2);
         result.add(2);
-        assertEquals(result,  this.dictionary.getValues(1));
+        assertEquals(result, this.dictionary.getValues(1));
         this.dictionary.add(3, 3);
         ISet result2 = new Set();
         result2.add(3);
-        assertEquals(result2,  this.dictionary.getValues(3));
+        assertEquals(result2, this.dictionary.getValues(3));
         this.dictionary.remove(3, 3);
         assertNull(this.dictionary.getValues(3));
     }

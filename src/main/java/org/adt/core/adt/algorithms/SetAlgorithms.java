@@ -1,6 +1,5 @@
 package org.adt.core.adt.algorithms;
 
-import org.adt.core.adt.definition.IQueue;
 import org.adt.core.adt.definition.ISet;
 import org.adt.core.adt.implementation.normal.Set;
 
@@ -17,16 +16,16 @@ public class SetAlgorithms {
     public static boolean in(ISet a, int element) {
         ISet aux = new Set();
         boolean exists = false;
-        while(!a.isEmpty()) {
+        while (!a.isEmpty()) {
             int value = a.choose();
-            if(element == value) {
+            if (element == value) {
                 exists = true;
                 break;
             }
             aux.add(value);
             a.remove(value);
         }
-        while(!aux.isEmpty()) {
+        while (!aux.isEmpty()) {
             int value = aux.choose();
             a.add(value);
             aux.remove(value);
@@ -37,9 +36,9 @@ public class SetAlgorithms {
     public static boolean equals(ISet a, ISet b) {
         ISet aux = new Set();
         boolean equals = true;
-        while(!a.isEmpty()) {
+        while (!a.isEmpty()) {
             int element = a.choose();
-            if(!in(b, element)) {
+            if (!in(b, element)) {
                 equals = false;
                 break;
             }
@@ -47,10 +46,10 @@ public class SetAlgorithms {
             a.remove(element);
             b.remove(element);
         }
-        if(!b.isEmpty()) {
+        if (!b.isEmpty()) {
             equals = false;
         }
-        while(!aux.isEmpty()) {
+        while (!aux.isEmpty()) {
             int element = aux.choose();
             a.add(element);
             b.add(element);
@@ -62,9 +61,9 @@ public class SetAlgorithms {
     public static boolean subset(ISet a, ISet b) {
         ISet aux = new Set();
         boolean subset = true;
-        while(!a.isEmpty()) {
+        while (!a.isEmpty()) {
             int element = a.choose();
-            if(!in(b, element)) {
+            if (!in(b, element)) {
                 subset = false;
                 break;
             }
@@ -72,10 +71,10 @@ public class SetAlgorithms {
             a.remove(element);
             b.remove(element);
         }
-        if(b.isEmpty()) {
+        if (b.isEmpty()) {
             subset = false;
         }
-        while(!aux.isEmpty()) {
+        while (!aux.isEmpty()) {
             int element = aux.choose();
             a.add(element);
             b.add(element);
@@ -91,24 +90,24 @@ public class SetAlgorithms {
     public static ISet union(ISet a, ISet b) {
         ISet aux = new Set();
         ISet result = new Set();
-        while(!a.isEmpty()) {
+        while (!a.isEmpty()) {
             int element = a.choose();
             aux.add(element);
             result.add(element);
             a.remove(element);
         }
-        while(!aux.isEmpty()) {
+        while (!aux.isEmpty()) {
             int element = aux.choose();
             a.add(element);
             aux.remove(element);
         }
-        while(!b.isEmpty()) {
+        while (!b.isEmpty()) {
             int element = b.choose();
             aux.add(element);
             result.add(element);
             b.remove(element);
         }
-        while(!aux.isEmpty()) {
+        while (!aux.isEmpty()) {
             int element = aux.choose();
             b.add(element);
             aux.remove(element);
@@ -127,15 +126,15 @@ public class SetAlgorithms {
     public static ISet intersection(ISet a, ISet b) {
         ISet aux = new Set();
         ISet result = new Set();
-        while(!a.isEmpty()) {
+        while (!a.isEmpty()) {
             int element = a.choose();
             aux.add(element);
-            if(in(b, element)) {
+            if (in(b, element)) {
                 result.add(element);
             }
             a.remove(element);
         }
-        while(!aux.isEmpty()) {
+        while (!aux.isEmpty()) {
             int element = aux.choose();
             a.add(element);
             aux.remove(element);
@@ -144,7 +143,7 @@ public class SetAlgorithms {
     }
 
     public static ISet intersectionAll(ISet[] sets) {
-        if(sets == null || sets.length == 0) {
+        if (sets == null || sets.length == 0) {
             return new Set();
         }
         ISet result = sets[0];
@@ -157,15 +156,15 @@ public class SetAlgorithms {
     public static ISet difference(ISet a, ISet b) {
         ISet aux = new Set();
         ISet result = new Set();
-        while(!a.isEmpty()) {
+        while (!a.isEmpty()) {
             int element = a.choose();
             aux.add(element);
-            if(!in(b, element)) {
+            if (!in(b, element)) {
                 result.add(element);
             }
             a.remove(element);
         }
-        while(!aux.isEmpty()) {
+        while (!aux.isEmpty()) {
             int element = aux.choose();
             a.add(element);
             aux.remove(element);
@@ -184,7 +183,7 @@ public class SetAlgorithms {
     public static int cardinality(ISet a) {
         ISet aux = new Set();
         int count = 0;
-        while(!a.isEmpty()) {
+        while (!a.isEmpty()) {
             int element = a.choose();
             aux.add(element);
             a.remove(element);
@@ -195,11 +194,11 @@ public class SetAlgorithms {
 
     private static String decimalToBinary(int n, int digits) {
         String candidate = "";
-        while(n != 0) {
+        while (n != 0) {
             candidate += n % 2;
             n = n / 2;
         }
-        while(candidate.length() < digits) {
+        while (candidate.length() < digits) {
             candidate += "0";
         }
         return (new StringBuilder(candidate)).reverse().toString();
@@ -212,25 +211,25 @@ public class SetAlgorithms {
         int[] values = new int[cardinality];
         int count = 0;
         ISet aux = new Set();
-        while(!set.isEmpty()) {
+        while (!set.isEmpty()) {
             int element = set.choose();
             values[count] = element;
             aux.add(element);
             set.remove(element);
             count++;
         }
-        while(!aux.isEmpty()) {
+        while (!aux.isEmpty()) {
             int element = aux.choose();
             set.add(element);
             aux.remove(element);
         }
 
         ISet[] result = new Set[limit];
-        for(int i = 0; i < limit; i++) {
+        for (int i = 0; i < limit; i++) {
             String binary = decimalToBinary(i, cardinality);
             ISet part = new Set();
-            for(int j = 0; j < binary.length(); j++) {
-                if(binary.charAt(j) == '1') {
+            for (int j = 0; j < binary.length(); j++) {
+                if (binary.charAt(j) == '1') {
                     part.add(values[j]);
                 }
             }
