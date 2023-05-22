@@ -76,8 +76,8 @@ public class Task01 {
 
         // Modifico esto respecto a Cola con Prioridad para admitir prioridades repetidas
         private int findIndex(int priority) {
-            for(int i = 0; i < this.priorities.length; i++) {
-                if(priority < this.array[i]) {
+            for (int i = 0; i < this.priorities.length; i++) {
+                if (priority < this.array[i]) {
                     return i;
                 }
             }
@@ -124,7 +124,7 @@ public class Task01 {
     public static void add15(IQueue queue) {
         IQueue aux = new Queue();
         int count = 0;
-        while(!queue.isEmpty()) {
+        while (!queue.isEmpty()) {
             aux.add(queue.getFirst());
             queue.remove();
             count++;
@@ -133,8 +133,8 @@ public class Task01 {
         int index = count / 2; // Dividir enteros es equivalente a redondear hacia abajo
 
         count = 0;
-        while(!aux.isEmpty()) {
-            if(count == index) {
+        while (!aux.isEmpty()) {
+            if (count == index) {
                 queue.add(15);
             }
             queue.add(aux.getFirst());

@@ -13,7 +13,7 @@ public class PriorityQueueTest {
         // test 1 element
         PriorityQueue priorityQueue = new PriorityQueue();
         assertTrue(priorityQueue.isEmpty());
-        priorityQueue.add(1,2);
+        priorityQueue.add(1, 2);
         assertFalse(priorityQueue.isEmpty());
 
         // test 2 elements
@@ -23,9 +23,9 @@ public class PriorityQueueTest {
         assertEquals(2, priorityQueue.getPriority());
 
         // test N elements
-        priorityQueue.add(-1,2);
-        priorityQueue.add(5,-2);
-        priorityQueue.add(0,0);
+        priorityQueue.add(-1, 2);
+        priorityQueue.add(5, -2);
+        priorityQueue.add(0, 0);
 
         assertEquals(5, priorityQueue.getFirst());
         assertEquals(-2, priorityQueue.getPriority());
@@ -52,7 +52,7 @@ public class PriorityQueueTest {
         assertDoesNotThrow(priorityQueue::remove);
 
         // test 1 element
-        priorityQueue.add(1,2);
+        priorityQueue.add(1, 2);
         priorityQueue.remove();
         assertTrue(priorityQueue.isEmpty());
 
@@ -64,8 +64,8 @@ public class PriorityQueueTest {
         assertEquals(2, priorityQueue.getPriority());
 
         // test N elements
-        priorityQueue.add(3,3);
-        priorityQueue.add(4,4);
+        priorityQueue.add(3, 3);
+        priorityQueue.add(4, 4);
         priorityQueue.remove();
 
         assertEquals(3, priorityQueue.getFirst());

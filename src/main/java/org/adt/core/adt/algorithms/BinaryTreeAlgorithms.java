@@ -227,4 +227,50 @@ public class BinaryTreeAlgorithms {
                 alternativeSwap((BinaryTreeWithReferences) binaryTree.getRight(), value);
     }
 
+    /**
+     * Precondicion: Arbol no vacio
+     * @param binaryTree arbol a mappear
+     * @return codigo LaTeX que representa el arbol.
+     */
+    public static String latex(IBinaryTree binaryTree) {
+        return "\\begin{tikzpicture}[level distance=1.5cm,\n" +
+                "level 1/.style={sibling distance=6cm},\n" +
+                "level 2/.style={sibling distance=3cm},\n" +
+                "level 3/.style={sibling distance=1.5cm}]\n" +
+                String.format("\\node[circle,draw] {$%d$}", binaryTree.getValue()) + "\n" +
+                latexChild(binaryTree.getLeft(), 1) + "\n" +
+                latexChild(binaryTree.getRight(), 1) + ";\n" +
+                "\\end{tikzpicture}";
+    }
+
+    private static String latexChild(IBinaryTree binaryTree, int spaces) {
+        if(binaryTree.getLeft() == null && binaryTree.getRight() == null) {
+            return String.format("child {node[circle,draw] {$%s$}}", binaryTree.getValue());
+        }
+
+        if(binaryTree.getLeft() != null && binaryTree.getRight() == null) {
+            return String.format("child {node[circle,draw] {$%s$}", binaryTree.getValue()) + "\n" +
+                    repeatSpaces(spaces + 1) + latexChild(binaryTree.getLeft(), spaces + 1) + "\n" +
+                    "}";
+        }
+
+        if(binaryTree.getLeft() == null && binaryTree.getRight() != null) {
+            return String.format("child {node[circle,draw] {$%s$}", binaryTree.getValue()) + "\n" +
+                    repeatSpaces(spaces + 1) + latexChild(binaryTree.getRight(), spaces + 1) + "\n" +
+                    "}";
+        }
+
+        return String.format("child {node[circle,draw] {$%s$}", binaryTree.getValue()) + "\n" +
+                repeatSpaces(spaces + 1) + latexChild(binaryTree.getLeft(), spaces + 1) + "\n" +
+                repeatSpaces(spaces + 1) + latexChild(binaryTree.getRight(), spaces + 1) + "\n" +
+                "}";
+    }
+
+    private static String repeatSpaces(int n) {
+        if(n == 0) {
+            return "";
+        }
+        return " " + repeatSpaces(n - 1);
+    }
+
 }

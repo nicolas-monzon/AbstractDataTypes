@@ -41,16 +41,15 @@ public class NaryTree implements INaryTree {
             for (int i = 0; i < size; i++) {
                 aux.add((i == index) ? naryTree : this.root.getChildren().get(i));
             }
+            this.root.setChildren(aux);
             return;
         }
 
-        if (size < index) {
-            for (int i = size; i < index; i++) {
-                aux.add(null);
-            }
-            aux.add(naryTree);
+        for (int i = size; i < index; i++) {
+            aux.add(null);
         }
-
+        aux.add(naryTree);
+        this.root.setChildren(aux);
     }
 
     @Override
@@ -69,5 +68,10 @@ public class NaryTree implements INaryTree {
             throw new RuntimeException("Error");
         }
         return this.root.getChildren().get(index);
+    }
+
+    @Override
+    public List<NaryTree> getChildren() {
+        return this.root.getChildren();
     }
 }

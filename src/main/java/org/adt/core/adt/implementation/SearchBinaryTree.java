@@ -1,17 +1,18 @@
 package org.adt.core.adt.implementation;
 
+import org.adt.core.adt.definition.IBinaryTree;
 import org.adt.core.adt.definition.ISearchBinaryTree;
 import org.adt.core.adt.implementation.dynamic.BinaryTree;
 
 public class SearchBinaryTree implements ISearchBinaryTree {
 
-    private final BinaryTree binaryTree;
+    private final IBinaryTree binaryTree;
 
     public SearchBinaryTree() {
         this.binaryTree = new BinaryTree();
     }
 
-    private SearchBinaryTree(BinaryTree binaryTree) {
+    private SearchBinaryTree(IBinaryTree binaryTree) {
         this.binaryTree = binaryTree;
     }
 
