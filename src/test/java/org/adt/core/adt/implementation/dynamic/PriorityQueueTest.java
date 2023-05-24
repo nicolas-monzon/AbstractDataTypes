@@ -1,5 +1,6 @@
 package org.adt.core.adt.implementation.dynamic;
 
+import org.adt.core.adt.definition.IPriorityQueue;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -41,6 +42,17 @@ public class PriorityQueueTest {
         priorityQueue.remove();
         assertEquals(-1, priorityQueue.getFirst());
         assertEquals(2, priorityQueue.getPriority()); // check same priority
+
+        // cheque queue with 2 elements
+        IPriorityQueue priorityQueue2 = new PriorityQueue();
+        priorityQueue2.add(1, 1);
+        priorityQueue2.add(3, 3);
+        priorityQueue2.add(2, 2);
+        assertEquals(1, priorityQueue2.getFirst());
+        priorityQueue2.remove();
+        assertEquals(2, priorityQueue2.getFirst());
+        priorityQueue2.remove();
+        assertEquals(3, priorityQueue2.getFirst());
     }
 
     @Test

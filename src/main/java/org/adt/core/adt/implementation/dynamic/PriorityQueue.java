@@ -41,7 +41,9 @@ public class PriorityQueue implements IPriorityQueue {
             candidate = candidate.getNext();
         }
         if (candidate.getPriority() > priority) {
-            backup.setNext(new PriorityNode(a, priority, null));
+            backup.setNext(new PriorityNode(a, priority, candidate));
+        } else {
+            candidate.setNext(new PriorityNode(a, priority, null));
         }
     }
 
