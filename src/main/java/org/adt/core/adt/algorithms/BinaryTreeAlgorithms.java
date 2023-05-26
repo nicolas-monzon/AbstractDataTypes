@@ -227,19 +227,82 @@ public class BinaryTreeAlgorithms {
                 alternativeSwap((BinaryTreeWithReferences) binaryTree.getRight(), value);
     }
 
+    public static boolean leafWithSameHeight(IBinaryTree binaryTree) {
+        int height = height(binaryTree);
+
+        return validLeafDepth(binaryTree, height);
+    }
+
+    private static boolean validLeafDepth(IBinaryTree binaryTree, int depth) {
+        if(depth == 0) {
+            return binaryTree == null || binaryTree.isEmpty();
+        }
+
+        if(depth == 1) {
+            return binaryTree != null &&
+                    !binaryTree.isEmpty() &&
+                    binaryTree.getLeft() == null &&
+                    binaryTree.getRight() == null;
+        }
+
+        if(binaryTree == null ||
+                binaryTree.isEmpty() ||
+                (binaryTree.getLeft() == null && binaryTree.getRight() == null)) {
+            return false;
+        }
+
+        if(binaryTree.getLeft() != null && binaryTree.getRight() == null) {
+            return validLeafDepth(binaryTree.getLeft(), depth - 1);
+        }
+
+        if(binaryTree.getRight() != null && binaryTree.getLeft() == null) {
+            return validLeafDepth(binaryTree.getRight(), depth - 1);
+        }
+
+        return validLeafDepth(binaryTree.getLeft(), depth - 1) && validLeafDepth(binaryTree.getRight(), depth - 1);
+    }
+
     /**
      * Precondicion: Arbol no vacio
      * @param binaryTree arbol a mappear
      * @return codigo LaTeX que representa el arbol.
      */
     public static String latex(IBinaryTree binaryTree) {
+        if(binaryTree.getLeft() != null && binaryTree.getRight() != null) {
+            return "\\begin{tikzpicture}[level distance=1.5cm,\n" +
+                    "level 1/.style={sibling distance=6cm},\n" +
+                    "level 2/.style={sibling distance=3cm},\n" +
+                    "level 3/.style={sibling distance=1.5cm}]\n" +
+                    String.format("\\node[circle,draw] {$%d$}", binaryTree.getValue()) + "\n" +
+                    latexChild(binaryTree.getLeft(), 1) + "\n" +
+                    latexChild(binaryTree.getRight(), 1) + ";\n" +
+                    "\\end{tikzpicture}";
+        }
+        if(binaryTree.getLeft() != null) {
+            return "\\begin{tikzpicture}[level distance=1.5cm,\n" +
+                    "level 1/.style={sibling distance=6cm},\n" +
+                    "level 2/.style={sibling distance=3cm},\n" +
+                    "level 3/.style={sibling distance=1.5cm}]\n" +
+                    String.format("\\node[circle,draw] {$%d$}", binaryTree.getValue()) + "\n" +
+                    latexChild(binaryTree.getLeft(), 1) + ";\n" +
+                    "\\end{tikzpicture}";
+        }
+
+        if(binaryTree.getRight() != null) {
+            return "\\begin{tikzpicture}[level distance=1.5cm,\n" +
+                    "level 1/.style={sibling distance=6cm},\n" +
+                    "level 2/.style={sibling distance=3cm},\n" +
+                    "level 3/.style={sibling distance=1.5cm}]\n" +
+                    String.format("\\node[circle,draw] {$%d$}", binaryTree.getValue()) + "\n" +
+                    latexChild(binaryTree.getRight(), 1) + ";\n" +
+                    "\\end{tikzpicture}";
+        }
+
         return "\\begin{tikzpicture}[level distance=1.5cm,\n" +
                 "level 1/.style={sibling distance=6cm},\n" +
                 "level 2/.style={sibling distance=3cm},\n" +
                 "level 3/.style={sibling distance=1.5cm}]\n" +
-                String.format("\\node[circle,draw] {$%d$}", binaryTree.getValue()) + "\n" +
-                latexChild(binaryTree.getLeft(), 1) + "\n" +
-                latexChild(binaryTree.getRight(), 1) + ";\n" +
+                String.format("\\node[circle,draw] {$%d$}", binaryTree.getValue()) + ";\n" +
                 "\\end{tikzpicture}";
     }
 

@@ -77,11 +77,28 @@ public class MultipleDictionary implements IMultipleDictionary {
         MultipleDictionaryNode candidate = this.first;
         while (candidate != null) {
             if (candidate.getKey() == key) {
-                return candidate.getValue();
+                return this.copyValues(candidate.getValue());
             }
             candidate = candidate.getNext();
         }
         return null; // Error
+    }
+
+    private ISet copyValues(ISet values) {
+        ISet set = new Set();
+        ISet aux = new Set();
+        while(!values.isEmpty()) {
+            int element = values.choose();
+            set.add(element);
+            aux.add(element);
+            values.remove(element);
+        }
+        while(!aux.isEmpty()) {
+            int element = aux.choose();
+            values.add(element);
+            aux.remove(element);
+        }
+        return set;
     }
 
     @Override
