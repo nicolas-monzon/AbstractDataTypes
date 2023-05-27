@@ -29,14 +29,14 @@ public class NaryTree implements INaryTree {
     public void add(int value, int index) {
         int size = this.root.getChildren().size();
 
-        NaryTree naryTree = new NaryTree();
+        INaryTree naryTree = new NaryTree();
         naryTree.create(value);
         if (size == index) {
             this.root.getChildren().add(naryTree);
             return;
         }
 
-        List<NaryTree> aux = new ArrayList<>();
+        List<INaryTree> aux = new ArrayList<>();
         if (size > index) {
             for (int i = 0; i < size; i++) {
                 aux.add((i == index) ? naryTree : this.root.getChildren().get(i));
@@ -62,7 +62,7 @@ public class NaryTree implements INaryTree {
     }
 
     @Override
-    public NaryTree get(int index) {
+    public INaryTree get(int index) {
         int size = this.root.getChildren().size();
         if (index > size) {
             throw new RuntimeException("Error");
@@ -71,7 +71,7 @@ public class NaryTree implements INaryTree {
     }
 
     @Override
-    public List<NaryTree> getChildren() {
+    public List<INaryTree> getChildren() {
         return this.root.getChildren();
     }
 }

@@ -51,11 +51,11 @@ public interface INaryTree {
      * @param index, posicion del hijo
      * @return hijo en la posicion indicada, o <code>null</code> en caso de no tener.
      */
-    NaryTree get(int index);
+    INaryTree get(int index);
 
     /**
      * @return lista con todos los hijos. Si el hijo en una posicion no existe entonces su valor sera <code>null</code>.
      */
-    List<NaryTree> getChildren();
+    List<INaryTree> getChildren();
 
 }
