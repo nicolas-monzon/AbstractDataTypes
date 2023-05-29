@@ -15,7 +15,7 @@ public class BooleanSet implements ISet {
         this.stack = new BooleanStack();
 
         // Considero el tope como la posicion 0
-        for(int i = 0; i < max - min + 1; i++) {
+        for (int i = 0; i < max - min + 1; i++) {
             this.stack.add(false);
         }
 
@@ -33,7 +33,7 @@ public class BooleanSet implements ISet {
 
     private void set(int index, boolean p) {
         BooleanStack aux = new BooleanStack();
-        for(int i = 0; i < index; i++) {
+        for (int i = 0; i < index; i++) {
             aux.add(this.stack.getTop());
             this.stack.remove();
         }
@@ -43,7 +43,7 @@ public class BooleanSet implements ISet {
         this.stack.add(p);
 
         // Recompongo la pila
-        while(!aux.isEmpty()) {
+        while (!aux.isEmpty()) {
             this.stack.add(aux.getTop());
             aux.remove();
         }
@@ -68,7 +68,7 @@ public class BooleanSet implements ISet {
             return -1;
         }
         int randomIndex = (new Random()).nextInt(this.max - this.min + 1);
-        if(this.get(randomIndex)) {
+        if (this.get(randomIndex)) {
             return randomIndex + this.min;
         }
         return this.choose();
@@ -76,7 +76,7 @@ public class BooleanSet implements ISet {
 
     private boolean get(int index) {
         BooleanStack aux = new BooleanStack();
-        for(int i = 0; i < index; i++) {
+        for (int i = 0; i < index; i++) {
             aux.add(this.stack.getTop());
             this.stack.remove();
         }
@@ -85,7 +85,7 @@ public class BooleanSet implements ISet {
         boolean result = this.stack.getTop();
 
         // Recompongo la pila
-        while(!aux.isEmpty()) {
+        while (!aux.isEmpty()) {
             this.stack.add(aux.getTop());
             aux.remove();
         }

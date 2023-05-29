@@ -87,13 +87,13 @@ public class MultipleDictionary implements IMultipleDictionary {
     private ISet copyValues(ISet values) {
         ISet set = new Set();
         ISet aux = new Set();
-        while(!values.isEmpty()) {
+        while (!values.isEmpty()) {
             int element = values.choose();
             set.add(element);
             aux.add(element);
             values.remove(element);
         }
-        while(!aux.isEmpty()) {
+        while (!aux.isEmpty()) {
             int element = aux.choose();
             values.add(element);
             aux.remove(element);

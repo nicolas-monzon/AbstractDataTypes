@@ -21,7 +21,7 @@ public class RandomizedStructures {
 
     public static LinkedList randomLinkedList() {
         LinkedList linkedList = new LinkedList();
-        for(int i = 0; i < TOTAL; i++) {
+        for (int i = 0; i < TOTAL; i++) {
             linkedList.add(randomInteger());
         }
         return linkedList;
@@ -29,7 +29,7 @@ public class RandomizedStructures {
 
     public static IStack randomStack() {
         IStack stack = new Stack();
-        for(int i = 0; i < TOTAL; i++) {
+        for (int i = 0; i < TOTAL; i++) {
             stack.add(randomInteger());
         }
         return stack;
@@ -37,7 +37,7 @@ public class RandomizedStructures {
 
     public static IQueue randomQueue() {
         IQueue queue = new Queue();
-        for(int i = 0; i < TOTAL; i++) {
+        for (int i = 0; i < TOTAL; i++) {
             queue.add(randomInteger());
         }
         return queue;
@@ -45,7 +45,7 @@ public class RandomizedStructures {
 
     public static IPriorityQueue randomPriorityQueue() {
         IPriorityQueue priorityQueue = new PriorityQueue();
-        for(int i = 0; i < TOTAL; i++) {
+        for (int i = 0; i < TOTAL; i++) {
             priorityQueue.add(randomInteger(), randomInteger());
         }
         return priorityQueue;
@@ -53,7 +53,7 @@ public class RandomizedStructures {
 
     public static ISet randomSet() {
         ISet set = new Set();
-        for(int i = 0; i < TOTAL; i++) {
+        for (int i = 0; i < TOTAL; i++) {
             set.add(randomInteger());
         }
         return set;
@@ -61,7 +61,7 @@ public class RandomizedStructures {
 
     public static IDictionary randomDictionary() {
         IDictionary dictionary = new Dictionary();
-        for(int i = 0; i < TOTAL; i++) {
+        for (int i = 0; i < TOTAL; i++) {
             dictionary.add(randomInteger(), randomInteger());
         }
         return dictionary;
@@ -69,10 +69,10 @@ public class RandomizedStructures {
 
     public static IMultipleDictionary randomMultipleDictionary() {
         IMultipleDictionary dictionary = new MultipleDictionary();
-        for(int i = 0; i < TOTAL; i++) {
+        for (int i = 0; i < TOTAL; i++) {
             int key = randomInteger();
             int totalValues = (new Random()).nextInt(1, 10);
-            for(int j = 0; j < totalValues; j++) {
+            for (int j = 0; j < totalValues; j++) {
                 dictionary.add(key, randomInteger());
             }
         }
@@ -81,7 +81,7 @@ public class RandomizedStructures {
 
     public static HashTable randomHashTable() {
         HashTable hashTable = new HashTable();
-        for(int i = 0; i < TOTAL; i++) {
+        for (int i = 0; i < TOTAL; i++) {
             hashTable.put(randomInteger(), randomInteger());
         }
         return hashTable;
@@ -95,11 +95,11 @@ public class RandomizedStructures {
     }
 
     private static void randomBinaryTree(IBinaryTree binaryTree) {
-        if(Math.random() < 0.5) {
+        if (Math.random() < 0.5) {
             binaryTree.addLeft(randomInteger());
             randomBinaryTree(binaryTree.getLeft());
         }
-        if(Math.random() < 0.5) {
+        if (Math.random() < 0.5) {
             binaryTree.addRight(randomInteger());
             randomBinaryTree(binaryTree.getRight());
         }
@@ -107,7 +107,7 @@ public class RandomizedStructures {
 
     public static ISearchBinaryTree randomSBT() {
         ISearchBinaryTree sbt = new SearchBinaryTree();
-        for(int i = 0; i < TOTAL; i++) {
+        for (int i = 0; i < TOTAL; i++) {
             sbt.add(randomInteger());
         }
         return sbt;
@@ -122,7 +122,7 @@ public class RandomizedStructures {
 
     private static void randomNaryTree(INaryTree naryTree) {
         int totalChild = (new Random()).nextInt(0, 3); // total children
-        for(int i = 0; i < totalChild; i++) {
+        for (int i = 0; i < totalChild; i++) {
             naryTree.add(randomInteger(), i);
             randomNaryTree(naryTree.get(i));
         }

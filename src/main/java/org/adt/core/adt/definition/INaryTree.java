@@ -1,7 +1,5 @@
 package org.adt.core.adt.definition;
 
-import org.adt.core.adt.implementation.dynamic.NaryTree;
-
 import java.util.List;
 
 /**

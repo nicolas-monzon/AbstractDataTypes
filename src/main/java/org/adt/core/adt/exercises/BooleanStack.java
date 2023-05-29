@@ -2,7 +2,7 @@ package org.adt.core.adt.exercises;
 
 public class BooleanStack {
 
-    private boolean[] array;
+    private final boolean[] array;
     private int count;
 
     public BooleanStack() {
@@ -16,7 +16,7 @@ public class BooleanStack {
     }
 
     public void remove() {
-        if(this.count == 0) {
+        if (this.count == 0) {
             throw new RuntimeException("Empty stack");
         }
         this.count--;
@@ -27,7 +27,7 @@ public class BooleanStack {
     }
 
     public boolean getTop() {
-        if(this.count == 0) {
+        if (this.count == 0) {
             throw new RuntimeException("Empty stack");
         }
         return this.array[this.count - 1];

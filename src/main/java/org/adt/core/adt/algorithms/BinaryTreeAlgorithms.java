@@ -234,28 +234,28 @@ public class BinaryTreeAlgorithms {
     }
 
     private static boolean validLeafDepth(IBinaryTree binaryTree, int depth) {
-        if(depth == 0) {
+        if (depth == 0) {
             return binaryTree == null || binaryTree.isEmpty();
         }
 
-        if(depth == 1) {
+        if (depth == 1) {
             return binaryTree != null &&
                     !binaryTree.isEmpty() &&
                     binaryTree.getLeft() == null &&
                     binaryTree.getRight() == null;
         }
 
-        if(binaryTree == null ||
+        if (binaryTree == null ||
                 binaryTree.isEmpty() ||
                 (binaryTree.getLeft() == null && binaryTree.getRight() == null)) {
             return false;
         }
 
-        if(binaryTree.getLeft() != null && binaryTree.getRight() == null) {
+        if (binaryTree.getLeft() != null && binaryTree.getRight() == null) {
             return validLeafDepth(binaryTree.getLeft(), depth - 1);
         }
 
-        if(binaryTree.getRight() != null && binaryTree.getLeft() == null) {
+        if (binaryTree.getRight() != null && binaryTree.getLeft() == null) {
             return validLeafDepth(binaryTree.getRight(), depth - 1);
         }
 
@@ -264,11 +264,12 @@ public class BinaryTreeAlgorithms {
 
     /**
      * Precondicion: Arbol no vacio
+     *
      * @param binaryTree arbol a mappear
      * @return codigo LaTeX que representa el arbol.
      */
     public static String latex(IBinaryTree binaryTree) {
-        if(binaryTree.getLeft() != null && binaryTree.getRight() != null) {
+        if (binaryTree.getLeft() != null && binaryTree.getRight() != null) {
             return "\\begin{tikzpicture}[level distance=1.5cm,\n" +
                     "level 1/.style={sibling distance=6cm},\n" +
                     "level 2/.style={sibling distance=3cm},\n" +
@@ -278,7 +279,7 @@ public class BinaryTreeAlgorithms {
                     latexChild(binaryTree.getRight(), 1) + ";\n" +
                     "\\end{tikzpicture}";
         }
-        if(binaryTree.getLeft() != null) {
+        if (binaryTree.getLeft() != null) {
             return "\\begin{tikzpicture}[level distance=1.5cm,\n" +
                     "level 1/.style={sibling distance=6cm},\n" +
                     "level 2/.style={sibling distance=3cm},\n" +
@@ -288,7 +289,7 @@ public class BinaryTreeAlgorithms {
                     "\\end{tikzpicture}";
         }
 
-        if(binaryTree.getRight() != null) {
+        if (binaryTree.getRight() != null) {
             return "\\begin{tikzpicture}[level distance=1.5cm,\n" +
                     "level 1/.style={sibling distance=6cm},\n" +
                     "level 2/.style={sibling distance=3cm},\n" +
@@ -307,17 +308,17 @@ public class BinaryTreeAlgorithms {
     }
 
     private static String latexChild(IBinaryTree binaryTree, int spaces) {
-        if(binaryTree.getLeft() == null && binaryTree.getRight() == null) {
+        if (binaryTree.getLeft() == null && binaryTree.getRight() == null) {
             return String.format("child {node[circle,draw] {$%s$}}", binaryTree.getValue());
         }
 
-        if(binaryTree.getLeft() != null && binaryTree.getRight() == null) {
+        if (binaryTree.getLeft() != null && binaryTree.getRight() == null) {
             return String.format("child {node[circle,draw] {$%s$}", binaryTree.getValue()) + "\n" +
                     repeatSpaces(spaces + 1) + latexChild(binaryTree.getLeft(), spaces + 1) + "\n" +
                     "}";
         }
 
-        if(binaryTree.getLeft() == null && binaryTree.getRight() != null) {
+        if (binaryTree.getLeft() == null && binaryTree.getRight() != null) {
             return String.format("child {node[circle,draw] {$%s$}", binaryTree.getValue()) + "\n" +
                     repeatSpaces(spaces + 1) + latexChild(binaryTree.getRight(), spaces + 1) + "\n" +
                     "}";
@@ -330,7 +331,7 @@ public class BinaryTreeAlgorithms {
     }
 
     private static String repeatSpaces(int n) {
-        if(n == 0) {
+        if (n == 0) {
             return "";
         }
         return " " + repeatSpaces(n - 1);

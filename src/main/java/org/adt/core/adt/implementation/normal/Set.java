@@ -2,6 +2,7 @@ package org.adt.core.adt.implementation.normal;
 
 import org.adt.core.adt.definition.ISet;
 
+import java.util.Arrays;
 import java.util.Random;
 
 public class Set implements ISet {
@@ -62,8 +63,13 @@ public class Set implements ISet {
         Set set = (Set) o;
         if (count != set.count) return false;
 
+        int[] array1Copy = Arrays.copyOf(array, array.length);
+        int[] array2Copy = Arrays.copyOf(set.array, set.array.length);
+        Arrays.sort(array1Copy);
+        Arrays.sort(array2Copy);
+
         for (int i = 0; i < count; i++) {
-            if (array[i] != set.array[i]) {
+            if (array1Copy[i] != array2Copy[i]) {
                 return false;
             }
         }
